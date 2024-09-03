@@ -1,0 +1,90 @@
+body {
+    /* Background */
+    background-image: url('../media/img/background.jpg'); /* Reemplaza con la ruta de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-attachment: fixed; /* La imagen no se moverá con el scroll */
+    background-position: center; /* Centra la imagen en la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */    
+    background-color: black;
+    /* Font */
+    color: white;
+    /* Margen */
+    margin: 0;
+    /* Padding */
+    padding: 0;
+}
+
+/* Pseudo-elemento ::before para oscurecer la imagen de fondo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Capa negra semi-transparente */
+    background-color: rgba(0, 0, 0, 0.8); 
+    /* Coloca la capa detrás del contenido del body */
+    z-index: -1; 
+}
+
+/* Contenedor */
+.container {
+    /* Margen superior */
+    margin-top: 20px;
+}
+
+
+/* Efecto de pulso para el botón */
+.btn-animated {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Gradiente para el texto */
+.gradient-text {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Sombra para el texto */
+.text-shadow {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para las estrellas flotantes */
+.star {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    animation: float 10s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
