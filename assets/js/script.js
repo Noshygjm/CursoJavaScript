@@ -187,14 +187,14 @@ const mostrarDatos = () => {
     }
 }
 
-function grabarStorage(data) {
+const grabarStorage = (data) => {
     let existeDato = JSON.parse(localStorage.getItem('horoscopo')) || [];
     existeDato.push(data);
     localStorage.setItem('horoscopo', JSON.stringify(existeDato));
 }
 
 
-function recuperarStorage() {
+const recuperarStorage = () => {
     return JSON.parse(localStorage.getItem('horoscopo')) || [];
 }
 
