@@ -110,12 +110,14 @@ const showSigno = () => {
 
     const signo = getSigno(dia, mes);
 
-    let textZodiaco = `Hola ${nombre}, según tu fecha de nacimiento (${fechaNac}), su sigo del zodiaco es ${signo}.`;
+    let textZodiaco = `Hola ${nombre}, según tu fecha de nacimiento (${fechaNac}), su sigo del zodiaco es`;
     let textDescripcion = getDescripcion(signo);
 
     zodiaco.innerHTML = `<h1 class="mt-5 gradient-text text-shadow">Horóscopo para ${nombre}</h1>
     
     <p class="lead mt-3">${textZodiaco}</p>
+
+    <h2 class="mt-5 gradient-text text-shadow">${signo}</h2>
 
     <p class="lead mt-3">${textDescripcion}</p>
     
@@ -156,29 +158,33 @@ const mostrarDatos = () => {
         return;
     }
 
+    if (existeDatos.length > 0) {
+        let tabla = `
+        <div class="container text-center mt-5">
+        <p>Horóscopos solicitados:</p>
+        <table class="table table-bordered table-sm mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Tipo de Horóscopo</th>
+                </tr>
+            </thead>
+            <tbody>`;
+        
+            existeDatos.forEach(item => {
+            tabla += `<tr class="bg-light">
+                        <td>${item.nombre}</td>
+                        <td>${item.fechaNacimiento}</td>
+                        <td>${item.tipoHoroscopo}</td>
+                    </tr>`;
+        });
 
-    let tabla = `
-    <div class="table-responsive d-flex justify-content-center">
-    <table class="table table-bordered table-sm mt-4">
-        <thead class="thead-dark">
-            <tr>
-                <th>Nombre</th>
-                <th>Fecha de Nacimiento</th>
-                <th>Tipo de Horóscopo</th>
-            </tr>
-        </thead>
-        <tbody>`;
-    
-        existeDatos.forEach(item => {
-        tabla += `<tr class="bg-light">
-                    <td>${item.nombre}</td>
-                    <td>${item.fechaNacimiento}</td>
-                    <td>${item.tipoHoroscopo}</td>
-                   </tr>`;
-    });
-
-    tabla += `</tbody></table></div>`;
-    datosGuardados.innerHTML = tabla;
+        tabla += `</tbody></table>
+        <button type="button" class="btn btn-danger mt-3" onclick="borrarStorage()">Borrar Datos Guardados</button>
+        </div>`;
+        datosGuardados.innerHTML = tabla;
+    }
 }
 
 function grabarStorage(data) {
