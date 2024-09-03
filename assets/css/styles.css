@@ -28,6 +28,16 @@ body::before {
     z-index: -1; 
 }
 
+h4 {
+    /* Font error */
+    color: red;   
+}
+
+table {
+    width: auto;
+    color: white;
+}
+
 /* Contenedor */
 .container {
     /* Margen superior */

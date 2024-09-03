@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     
+    <link rel="stylesheet" href=".././assets/css/styles.css">
+    <title>Horoscopo</title>
+</head>
+<body>
+    <!-- Menú de navegación con Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Horoscopia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./horoscopo.html">Horóscopo Online</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./contacto.html">Solicitar <span class="sr-only">(actual)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal con formulario de contacto -->
+    <div class="container text-center mt-5">
+        <h1 class="mt-5 gradient-text text-shadow">Contacto</h1>
+        <p class="lead mt-3">Por favor, completa el siguiente formulario para solicitar tu horóscopo personalizado.</p>
+        
+        <!-- Formulario de contacto -->
+        <form class="mt-4 d-inline-block">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control form-control-sm w-auto mx-auto" id="nombre" placeholder="Ingresa tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" class="form-control form-control-sm w-auto mx-auto" id="fechaNacimiento" required>
+            </div>
+            <div class="form-group">
+                <label for="tipoHoroscopo">Tipo de Horóscopo:</label>
+                <select class="form-control form-control-sm w-auto mx-auto" id="tipoHoroscopo" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="alquimista">Horóscopo alquimista</option>
+                    <option value="arabe">Horóscopo árabe</option>
+                    <option value="maya">Horóscopo maya</option>
+                    <option value="azteca">Horóscopo azteca</option>
+                    <option value="celta">Horóscopo celta</option>
+                    <option value="chino">Horóscopo chino</option>
+                    <option value="egipcio">Horóscopo egipcio</option>
+                    <option value="gitano">Horóscopo gitano</option>
+                </select>
+            </div>
+            <div id="error"></div>
+            <button type="submit" class="btn btn-primary btn-lg mt-3 btn-animated" onclick="enviarDatos()">Solicitar Horóscopo</button>
+        </form>
+    </div>
+    
+
+    <!-- Grilla para mostrar los datos guardados -->
+    <div id="datosGuardados" class="mt-4"></div>
+
+    <!-- Botón para borrar datos guardados -->
+    <button type="button" class="btn btn-danger mt-3" onclick="borrarStorage()">Borrar Datos Guardados</button>
+
+    <!-- Enlace a jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src=".././assets/js/script.js"></script> 
+</body>
+</html>
