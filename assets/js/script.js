@@ -114,6 +114,7 @@ const showSigno = () => {
     usuario.usuario = nombre;
     usuario.logueado = true;
     usuario.fecha = fechaNacimiento;
+    usuario.signo = signo;
     grabarDatoStorage('logueado', usuario);
 
     let textZodiaco = `Hola ${nombre}, según tu fecha de nacimiento (${fechaNac}), su sigo del zodiaco es`;

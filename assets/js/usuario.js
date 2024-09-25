@@ -3,4 +3,5 @@ let usuario = {
   logueado: false,
   fecha: new Date(),
   creditos: 0,
+  signo: '',
 }
