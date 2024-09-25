@@ -110,6 +110,12 @@ const showSigno = () => {
 
     const signo = getSigno(dia, mes);
 
+    /* Si solicito un horoscopo lo logueamos automaticamente */
+    usuario.usuario = nombre;
+    usuario.logueado = true;
+    usuario.fecha = fechaNacimiento;
+    grabarDatoStorage('logueado', usuario);
+
     let textZodiaco = `Hola ${nombre}, según tu fecha de nacimiento (${fechaNac}), su sigo del zodiaco es`;
     let textDescripcion = getDescripcion(signo);
 
@@ -120,89 +126,12 @@ const showSigno = () => {
     <h2 class="mt-5 gradient-text text-shadow">${signo}</h2>
 
     <p class="lead mt-3">${textDescripcion}</p>
-    
+
+    <button type="button" class="btn btn-primary btn-lg mt-3 btn-animated" onclick="abrirPagina('./solicitar.html')">Solicitar Horóscopo completo!!!</button>    
     `;
 
 }
 
-const enviarDatos = () => {
-    const nombre = document.getElementById('nombre').value;
-    const fechaNacimiento = document.getElementById('fechaNacimiento').value;
-    const tipoHoroscopo = document.getElementById('tipoHoroscopo').value;
-    const error = document.getElementById('error');
-
-    if (!nombre || !fechaNacimiento || !tipoHoroscopo) {
-        error.innerHTML = `<h4>Por favor, completa todos los campos.</h4>`;
-        return;
-    }
-
-     const datosFormulario = {
-        nombre: nombre,
-        fechaNacimiento: fechaNacimiento,
-        tipoHoroscopo: tipoHoroscopo,
-    };
-
-    grabarStorage(datosFormulario);
-    mostrarDatos();
-}
-
-const mostrarDatos = () => {
-    const datosGuardados = document.getElementById('datosGuardados');
-    let existeDatos = recuperarStorage();
-
-    // Limpiar la grilla antes de agregar nuevos datos
-    datosGuardados.innerHTML = '';
-
-    if (existeDatos.length === 0) {
-        datosGuardados.innerHTML = '<p>No hay datos guardados.</p>';
-        return;
-    }
-
-    if (existeDatos.length > 0) {
-        let tabla = `
-        <div class="container text-center mt-5">
-        <p>Horóscopos solicitados:</p>
-        <table class="table table-bordered table-sm mt-4">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Tipo de Horóscopo</th>
-                </tr>
-            </thead>
-            <tbody>`;
-        
-            existeDatos.forEach(item => {
-            tabla += `<tr class="bg-light">
-                        <td>${item.nombre}</td>
-                        <td>${item.fechaNacimiento}</td>
-                        <td>${item.tipoHoroscopo}</td>
-                    </tr>`;
-        });
-
-        tabla += `</tbody></table>
-        <button type="button" class="btn btn-danger mt-3" onclick="borrarStorage()">Borrar Datos Guardados</button>
-        </div>`;
-        datosGuardados.innerHTML = tabla;
-    }
-}
-
-const grabarStorage = (data) => {
-    let existeDato = JSON.parse(localStorage.getItem('horoscopo')) || [];
-    existeDato.push(data);
-    localStorage.setItem('horoscopo', JSON.stringify(existeDato));
-}
-
-
-const recuperarStorage = () => {
-    return JSON.parse(localStorage.getItem('horoscopo')) || [];
-}
-
-
-const borrarStorage = () => {
-    localStorage.removeItem("horoscopo");
-    mostrarDatos();
-}
-
-// Mostramos los datos al cargar la página
-window.onload = mostrarDatos;
+const abrirPagina = (url) => {
+    window.location.href = url; 
+} 

@@ -98,3 +98,8 @@ table {
         transform: translateY(0);
     }
 }
+
+/* menu de logueo */
+.logueo {
+    text-align: right; 
+}
