@@ -1,0 +1,15 @@
+{
+  "tipos": [
+    { "tipo":"alquimista"},
+    { "tipo":"árabe"},
+    { "tipo":"maya"},
+    { "tipo":"azteca"},
+    { "tipo":"celta o druida"},
+    { "tipo":"chino"},
+    { "tipo":"egipcio"},
+    { "tipo":"gitano"},
+    { "tipo":"hindú"},
+    { "tipo":"druida"},
+    { "tipo":"hada"}
+  ]
+}
